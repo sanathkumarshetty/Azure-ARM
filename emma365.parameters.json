@@ -5,7 +5,7 @@
   "parameters": {
 
     "baseTemplateUri": {
-      "value": "https://raw.githubusercontent.com/sanathkumarshetty/Azure-ARM/master/"
+      "value": "https://raw.githubusercontent.com/sanathkumarshetty/Azure-ARM/master"
     },
     "nestedDeploymentNameDiagnosticsStorage": {
       "value": "deploy-diagnostics-storage"
