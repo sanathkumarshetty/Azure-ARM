@@ -39,11 +39,35 @@
       "metadata": {
         "description": "Type of storage account."
       }
+    },
+    "nestedDeploymentNamesfvmssfrontendStorage": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the storage account deployment."
+      }
+    },
+    "sharedTemplateNamesfvmssfrontendStorage": {
+      "type": "string",
+      "metadata": {
+        "description": "Template name for the storage account."
+      }
+    },
+    "storageAccountNamePrefixsfvmssfrontendStorage": {
+      "type": "string",
+      "metadata": {
+        "description": "Prefix string for storage account name."
+      }
+    },
+    "storageTypesfvmssfrontendStorage": {
+      "type": "string",
+      "metadata": {
+        "description": "Type of storage account."
+      }
     }
   },
   "variables": {
     "deploymentApiVersion": "2016-02-01",
-    "storageApiVersion": "2015-06-15"
+    "storageApiVersion": "2015-06-15"    
   },
   "resources": [
     {
@@ -53,13 +77,30 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('baseTemplateUri'), '/shared/', parameters('sharedTemplateNameDiagnosticsStorage'))]",
+          "uri": "[concat(parameters('baseTemplateUri'), '/shared/storage/', parameters('sharedTemplateNameDiagnosticsStorage'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "storageType": { "value": "[parameters('storageTypeDiagnosticsStorage')]" },
           "storageApiVersion": { "value": "[variables('storageApiVersion')]" },
           "storageAccountNamePrefix": { "value": "[parameters('storageAccountNamePrefixDiagnosticsStorage')]" }
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('deploymentApiVersion')]",
+      "name": "[parameters('nestedDeploymentNamesfvmssfrontendStorage')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('baseTemplateUri'), '/shared/storage/', parameters('sharedTemplateNamesfvmssfrontendStorage'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "storageType": { "value": "[parameters('storageTypesfvmssfrontendStorage')]" },
+          "storageApiVersion": { "value": "[variables('storageApiVersion')]" },
+          "storageAccountNamePrefix": { "value": "[parameters('storageAccountNamePrefixsfvmssfrontendStorage')]" }
         }
       }
     }

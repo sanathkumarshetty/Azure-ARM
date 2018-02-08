@@ -18,6 +18,18 @@
     },
     "storageAccountNamePrefixDiagnosticsStorage": {
       "value": "storagediagnostics"
+    },
+    "nestedDeploymentNamesfvmssfrontendStorage": {
+      "value": "deploy-sfvmssfrontend-storage"
+    },
+    "sharedTemplateNamesfvmssfrontendStorage": {
+      "value": "sfFRontendStorageAccount.json"
+    },
+    "storageTypesfvmssfrontendStorage": {
+      "value": "Standard_LRS"
+    },
+    "storageAccountNamePrefixsfvmssfrontendStorage": {
+      "value": "sffrontendstr"
     }
   }
 }

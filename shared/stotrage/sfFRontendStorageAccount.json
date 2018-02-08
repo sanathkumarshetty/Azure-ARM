@@ -33,17 +33,28 @@
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageAccountNamePrefix'), parameters('tempTag'))]"
+    "storageName": "[concat(parameters('storageAccountNamePrefix'), parameters('tempTag'))]",
+    "sffrontendAccountStorageArray": [
+      "[concat(variables('storageName'), '0')]",
+      "[concat(variables('storageName'), '1')]",
+      "[concat(variables('storageName'), '2')]"
+    ]
   },
   "resources": [
     {
-      "name": "[variables('storageName')]",
+      "name": "[variables('sffrontendAccountStorageArray')[copyIndex()]]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[resourceGroup().location]",
       "apiVersion": "[parameters('storageApiVersion')]",
+      "copy": {
+        "name": "storageLoop",
+        "count": 3
+      },
       "dependsOn": [],
       "tags": {
-        "displayName": "[variables('storageName')]"
+        "displayName": "[variables('storageName')]",
+        "projectname": "emma365",
+        "environment": "dev"
       },
       "properties": {
         "accountType": "[parameters('storageType')]"
