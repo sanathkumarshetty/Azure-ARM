@@ -1,13 +1,13 @@
 ﻿### Define variables
 $location = 'Australia Southeast'
-$resourceGroupName = 'pluralsight-arm-nested'
-$resourceDeploymentSolutionName = 'pluralsight-arm-nested-deployment'
+$resourceGroupName = 'sf-arm-nested'
+$resourceDeploymentSolutionName = 'sf-arm-nested-deployment'
 $templateBaseUri = 'https://raw.githubusercontent.com/sanathkumarshetty/Azure-ARM/master'
-$templateFile = 'azureDeploy.json'
+$templateFile = 'emma365.deploy.json'
 
 
 $template = $templateBaseUri + '/' + $templateFile
-$templateParametersFile = 'azureDeploy.parameters.json'
+$templateParametersFile = 'emma365.parameters.json'
 $templateParameters = $templateBaseUri + '/' + $templateParametersFile
 
 $tenantID = "dfcdef42-195d-4e0d-9808-2d488688da0e"  #ashoktenantID
