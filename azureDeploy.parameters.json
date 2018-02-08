@@ -1,7 +1,9 @@
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": { 
+<<<<<<< HEAD
+  "parameters": {
+
     "baseTemplateUri": {
       "value": "https://raw.githubusercontent.com/sanathkumarshetty/Azure-ARM/master/"
     },
@@ -60,12 +62,7 @@
       "value": "vmAdmin"
     },
     "vmAdminPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/8c15b385-5593-495b-bfe6-b1d62f0eb0e4/resourceGroups/pluralsight-keyvault/providers/Microsoft.KeyVault/vaults/pluralsight-vault"
-        },
-        "secretName": "vmAdminPassword"
-      }
+      "value": "password"
     },
     "vmWindowsOSVersion": {
       "value": "2012-R2-Datacenter"
