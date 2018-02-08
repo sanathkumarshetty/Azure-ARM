@@ -23,10 +23,17 @@
       "metadata": {
         "description": "Prefix for Storage Account Name"
       }
+    },
+    "tempTag": {
+      "type": "string",
+      "defaultValue": "emma365",
+      "metadata": {
+        "description": "Prefix for Storage Account Name"
+      }
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
+    "storageName": "[concat(parameters('storageAccountNamePrefix'), parameters('tempTag'))]"
   },
   "resources": [
     {
