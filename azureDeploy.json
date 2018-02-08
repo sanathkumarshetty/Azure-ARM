@@ -1,15 +1,16 @@
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {     
+    "parameters": {   
+    
     "baseTemplateUri": {
       "type": "string",
       "metadata": {
         "description": "Base URI of template resources."
       }
     },
-     "deploymentType": {
-      "type": "string",
+    "deploymentType": {
+     "type": "string",
       "allowedValues": [ "dev", "prod" ],
       "defaultValue": "dev",
       "metadata": {
@@ -125,7 +126,7 @@
       }
     },
     "vmAdminPassword": {
-      "type": "securestring",
+      "type": "string",
       "metadata": {
         "description": "Password for the local admin account."
       }
