@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "baseTemplateUri": {
-      "value": "https://steamstorage01.blob.core.windows.net/resources"
+      "value": "https://github.com/sanathkumarshetty/Azure-ARM/blob/master"
     },
     "nestedDeploymentNameVnet": {
       "value": "deploy-virtual-network"
