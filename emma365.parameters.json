@@ -1,0 +1,23 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+
+  "parameters": {
+
+    "baseTemplateUri": {
+      "value": "https://raw.githubusercontent.com/sanathkumarshetty/Azure-ARM/master/"
+    },
+    "nestedDeploymentNameDiagnosticsStorage": {
+      "value": "deploy-diagnostics-storage"
+    },
+    "sharedTemplateNameDiagnosticsStorage": {
+      "value": "diagnosticsStorageAccount.json"
+    },
+    "storageTypeDiagnosticsStorage": {
+      "value": "Standard_LRS"
+    },
+    "storageAccountNamePrefixDiagnosticsStorage": {
+      "value": "storagediagnostics"
+    }
+  }
+}
