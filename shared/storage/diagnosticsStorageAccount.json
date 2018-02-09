@@ -48,7 +48,7 @@
         "environment": "dev"
       },
       "properties": {
-        "accountType": "[parameters('storageType')]"
+        "accountType": "[parameters('tempTag')]"
       }
     }
   ],
