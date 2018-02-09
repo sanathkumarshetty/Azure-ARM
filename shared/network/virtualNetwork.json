@@ -1,0 +1,139 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vNetName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the virtual network."
+      }
+    },
+    "deploymentType": {
+      "type": "string",
+      "allowedValues": [ "dev", "prod" ],
+      "defaultValue": "dev",
+      "metadata": {
+        "description": "String to determine which network the VM is deployed to."
+      }
+    },
+    "vNetApiVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "Azure API for virtual network."
+      }
+    },
+    "vNetRange": {
+      "type": "string",
+      "metadata": {
+        "description": "IP range of the virtual network."
+      }
+    },
+    "subnetNamesfFrontEnd": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet Names"
+      }
+    },
+    "subnetNamesfBackEnd": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet Names"
+      }
+    },
+    "subnetNamesfManagement": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet Names"
+      }
+    },
+    "subnetNameWAF": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet Names"
+      }
+    },
+    "sfFrontEndAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "IP range of subnet."
+      }
+    },
+    "sfBackEndAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "IP range of subnet."
+      }
+    },
+    "sfManagementAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "IP range of subnet."
+      }
+    },
+    "WAFAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "IP range of subnet."
+      }
+    }
+  },
+  "variables": {
+    "vNetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vNetName'))]",
+    "subnetNamesfFrontEndID": "[concat(variables('vNetID'), '/network/', parameters('subnetNamesfFrontEnd'))]",
+    "subnetNamesfBackEndID": "[concat(variables('vNetID'), '/network/', parameters('subnetNamesfBackEnd'))]",
+    "subnetNamesfManagementID": "[concat(variables('vNetID'), '/network/', parameters('subnetNamesfManagement'))]",
+    "subnetNameWAFID": "[concat(variables('vNetID'), '/network/', parameters('subnetNameWAF'))]"
+
+  },
+  "resources": [
+    {
+      "name": "[parameters('vNetName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "[parameters('vNetApiVersion')]",
+      "dependsOn": [ ],
+      "tags": {
+        "displayName": "[parameters('vNetName')]"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('vNetRange')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('subnetNamesfFrontEnd')]",
+            "properties": {
+              "addressPrefix": "[parameters('sfFrontEndAddressRange')]"
+            }
+          },
+          {
+            "name": "[parameters('subnetNamesfBackEnd')]",
+            "properties": {
+              "addressPrefix": "[parameters('sfBackEndAddressRange')]"
+            }
+          },
+          {
+            "name": "[parameters('subnetNamesfManagement')]",
+            "properties": {
+              "addressPrefix": "[parameters('sfManagementAddressRange')]"
+            }
+          },
+          {
+            "name": "[parameters('subnetNameWAF')]",
+            "properties": {
+              "addressPrefix": "[parameters('WAFAddressRange')]"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+    "subnetID": {
+      "type": "string",
+      "value": "[variables('subnetNamesfFrontEndID')]"
+    }
+  }
+}

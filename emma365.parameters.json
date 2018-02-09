@@ -30,6 +30,48 @@
     },
     "storageAccountNamePrefixsfvmssfrontendStorage": {
       "value": "sffrontendstr"
+    },
+
+
+
+    // vnet and subnets
+
+    "nestedDeploymentNameVnet": {
+      "value": "deploy-vnet-sf"
+    },
+    "sharedTemplateNameVnet": {
+      "value": "virtualNetwork.json"
+    },
+
+    "virtualNetworkName": {
+      "value": "sfcluster-vnet"
+    },
+    "virtualNetworkAddressRange": {
+      "value": "10.0.0.0/16"
+    },
+    "subnetNamesfFrontEnd": {
+      "value": "sfFrontEnd-subnet"
+    },
+    "subnetsfFrontEndAddressRange": {
+      "value": "10.0.0.0/24"
+    },
+    "subnetNamesfBackEnd": {
+      "value": "sfBackEnd-subnet"
+    },
+    "sfBackEndAddressRange": {
+      "value": "10.0.1.0/24"
+    },
+    "subnetNamesfManagement": {
+      "value": "sfManagement-subnet"
+    },
+    "sfManagementAddressRange": {
+      "value": "10.0.2.0/24"
+    },
+    "subnetNameWAF": {
+      "value": "WAF-subnet"
+    },
+    "WAFAddressRange": {
+      "value": "10.0.3.0/24"
     }
   }
 }

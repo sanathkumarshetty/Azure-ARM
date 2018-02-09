@@ -63,11 +63,84 @@
       "metadata": {
         "description": "Type of storage account."
       }
+    },
+    "nestedDeploymentNameVnet": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Vnet deployment."
+      }
+    },
+    "sharedTemplateNameVnet": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Vnet deployment template"
+      }
+    },
+    "virtualNetworkName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of Virtual Network."
+      }
+    },
+    "virtualNetworkAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "Virtual Network Address space"
+      }
+    },
+    "subnetNamesfFrontEnd": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet for sf fornt end"
+      }
+    },
+    "subnetsfFrontEndAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "Address Range for sf fornt end"
+      }
+    },
+    "subnetNamesfBackEnd": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet for sf Back end"
+      }
+    },
+    "sfBackEndAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "Address Range for sf fornt end"
+      }
+    },
+    "subnetNamesfManagement": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet for sf Management"
+      }
+    },
+    "sfManagementAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "Address Range for sf Management"
+      }
+    },
+    "subnetNameWAF": {
+      "type": "string",
+      "metadata": {
+        "description": "subnet for sf WAF"
+      }
+    },
+    "WAFAddressRange": {
+      "type": "string",
+      "metadata": {
+        "description": "Address Range for WAF"
+      }
     }
   },
   "variables": {
     "deploymentApiVersion": "2016-02-01",
-    "storageApiVersion": "2015-06-15"    
+    "storageApiVersion": "2015-06-15",
+    "vNetApiVersion": "2015-06-15"
   },
   "resources": [
     {
@@ -101,6 +174,32 @@
           "storageType": { "value": "[parameters('storageTypesfvmssfrontendStorage')]" },
           "storageApiVersion": { "value": "[variables('storageApiVersion')]" },
           "storageAccountNamePrefix": { "value": "[parameters('storageAccountNamePrefixsfvmssfrontendStorage')]" }
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('deploymentApiVersion')]",
+      "name": "[parameters('nestedDeploymentNameVnet')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('baseTemplateUri'), '/shared/', parameters('sharedTemplateNameVnet'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vNetName": { "value": "[parameters('virtualNetworkName')]" },
+          "vNetApiVersion": { "value": "[variables('vNetApiVersion')]" },
+          "vNetRange": { "value": "[parameters('virtualNetworkAddressRange')]" },
+          "subnetNamesfFrontEnd": { "value": "[parameters('subnetNamesfFrontEnd')]" },
+          "sfFrontEndAddressRange": { "value": "[parameters('subnetsfFrontEndAddressRange')]" },
+          "subnetNamesfBackEnd": { "value": "[parameters('subnetNamesfBackEnd')]" },
+          "sfBackEndAddressRange": { "value": "[parameters('sfBackEndAddressRange')]" },
+          "subnetNamesfManagement": { "value": "[parameters('subnetNamesfManagement')]" },
+          "sfManagementAddressRange": { "value": "[parameters('sfManagementAddressRange')]" },
+          "subnetNameWAF": { "value": "[parameters('subnetNameWAF')]" },
+          "WAFAddressRange": { "value": "[parameters('WAFAddressRange')]" },
+          "deploymentType": { "value": "[parameters('deploymentType')]" }
         }
       }
     }
