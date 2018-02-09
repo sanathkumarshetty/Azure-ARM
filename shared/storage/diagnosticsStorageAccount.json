@@ -43,12 +43,12 @@
       "apiVersion": "[parameters('storageApiVersion')]",
       "dependsOn": [],
       "tags": {
-        "displayName": "[variables('storageName')]",
+        "displayName": "[parameters('tempTag')]",
         "projectname": "emma365",
         "environment": "dev"
       },
       "properties": {
-        "accountType": "[parameters('tempTag')]"
+        "accountType": "[parameters('storageType')]"
       }
     }
   ],
