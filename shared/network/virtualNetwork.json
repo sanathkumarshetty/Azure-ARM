@@ -134,6 +134,10 @@
     "subnetIDsffrontend": {
       "type": "string",
       "value": "[variables('subnetIDsffrontend')]"
+    },
+    "vvvvvvvvvv": {
+      "type": "string",
+      "value": "[variables('vNetID')]"
     }
   }
 }

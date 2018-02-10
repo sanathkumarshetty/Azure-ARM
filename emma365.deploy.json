@@ -190,40 +190,6 @@
   "resources": [
     {
       "apiVersion": "[variables('deploymentApiVersion')]",
-      "name": "[parameters('nestedDeploymentNameDiagnosticsStorage')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('baseTemplateUri'), '/shared/storage/', parameters('sharedTemplateNameDiagnosticsStorage'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "storageType": { "value": "[parameters('storageTypeDiagnosticsStorage')]" },
-          "storageApiVersion": { "value": "[variables('storageApiVersion')]" },
-          "storageAccountNamePrefix": { "value": "[parameters('storageAccountNamePrefixDiagnosticsStorage')]" }
-        }
-      }
-    },
-    {
-      "apiVersion": "[variables('deploymentApiVersion')]",
-      "name": "[parameters('nestedDeploymentNamesfvmssfrontendStorage')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('baseTemplateUri'), '/shared/storage/', parameters('sharedTemplateNamesfvmssfrontendStorage'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "storageType": { "value": "[parameters('storageTypesfvmssfrontendStorage')]" },
-          "storageApiVersion": { "value": "[variables('storageApiVersion')]" },
-          "storageAccountNamePrefix": { "value": "[parameters('storageAccountNamePrefixsfvmssfrontendStorage')]" }
-        }
-      }
-    },
-    {
-      "apiVersion": "[variables('deploymentApiVersion')]",
       "name": "[parameters('nestedDeploymentNameVnet')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -247,26 +213,6 @@
           "deploymentType": { "value": "[parameters('deploymentType')]" }
         }
       }
-    },
-    {
-      "apiVersion": "[variables('deploymentApiVersion')]",
-      "name": "[parameters('nestedDeploymentNamesffrontendlb')]",
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', parameters('nestedDeploymentNameVnet'))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('baseTemplateUri'), '/shared/loadbalancer/', parameters('sharedTemplateNamelbsffrontend'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "loadBalancerApiVersion": { "value": "[variables('loadBalancerApiVersion')]" },
-          "clusterName": { "value": "[parameters('clusterName')]" },
-          "sffrontendSubnet": { "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.subnetIDsffrontend.value]" }
-        }
-      }
     }
-        ]
+  ]
       }
