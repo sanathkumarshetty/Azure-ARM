@@ -214,5 +214,15 @@
         }
       }
     }
-  ]
-      }
+  ],
+  "outputs": {
+    "subnetIDsffrontend": {
+      "type": "string",
+      "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.subnetIDsffrontend.value]"
+    },
+    "vvvvvvvvvv": {
+      "type": "string",
+      "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.subnetIDsffrontend.vNetID]",
+      
+    }
+  }
