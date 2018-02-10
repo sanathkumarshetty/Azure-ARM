@@ -139,7 +139,7 @@
   },
   "variables": {
     "deploymentApiVersion": "2016-02-01",
-    "storageApiVersion": "2015-06-15",
+    "storageApiVersion": "2016-01-01",
     "vNetApiVersion": "2015-06-15"
   },
   "resources": [
