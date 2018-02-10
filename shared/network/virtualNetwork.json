@@ -131,7 +131,7 @@
     }
   ],
   "outputs": {
-    "subnetID": {
+    "subnetIDsffrontend": {
       "type": "string",
       "value": "[variables('subnetIDsffrontend')]"
     }
