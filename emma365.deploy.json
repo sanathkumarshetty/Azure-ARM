@@ -258,7 +258,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('baseTemplateUri'), '/shared/', parameters('sharedTemplateNamelbsffrontend'))]",
+          "uri": "[concat(parameters('baseTemplateUri'), '/shared/loadbalancer/', parameters('sharedTemplateNamelbsffrontend'))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
