@@ -270,5 +270,13 @@
     }
 
   ],
-  "outputs": { }
+  "outputs": {
+
+    "lbNatPoolIDsffrontendpoooooooooooooooooo": 
+    {
+      "type": "string",
+      "value": "[reference(parameters('nestedDeploymentNamesffrontendlb')).outputs.lbNatPoolIDsffrontend.value]"
+    }
+            }
+  
   }
