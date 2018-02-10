@@ -24,7 +24,7 @@
     },
     "clusterName": {
       "type": "string",
-       "defaultValue": "tetclustersanath",
+      "defaultValue": "tetclustersanath",
       "metadata": {
         "description": "Template name for the storage account."
       }
@@ -254,7 +254,7 @@
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
         "[concat('Microsoft.Resources/deployments/', parameters('nestedDeploymentNameVnet'))]"
-      ]
+      ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
