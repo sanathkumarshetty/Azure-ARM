@@ -33,7 +33,7 @@
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageAccountNamePrefix'), parameters('tempTag'))]"
+    "storageName": "[concat(parameters('storageAccountNamePrefix'))]"
   },
   "resources": [
     {
@@ -47,8 +47,10 @@
         "projectname": "emma365",
         "environment": "dev"
       },
-      "properties": {
-        "accountType": "[parameters('storageType')]"
+       "properties": {},
+      "kind": "Storage",
+      "sku": {
+        "name": "[parameters('storageType')]"
       }
     }
   ],

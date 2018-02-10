@@ -33,7 +33,7 @@
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageAccountNamePrefix'), parameters('tempTag'))]",
+    "storageName": "[concat(parameters('storageAccountNamePrefix'))]",
     "sffrontendAccountStorageArray": [
       "[concat(variables('storageName'), '0')]",
       "[concat(variables('storageName'), '1')]",
@@ -56,8 +56,10 @@
         "projectname": "emma365",
         "environment": "dev"
       },
-      "properties": {
-        "accountType": "[parameters('storageType')]"
+      "properties": {},
+      "kind": "Storage",
+      "sku": {
+        "name": "[parameters('storageType')]"
       }
     }
   ],
