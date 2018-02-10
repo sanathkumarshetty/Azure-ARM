@@ -33,7 +33,7 @@
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageAccountNamePrefix'))]"
+    "storageName": "[concat(parameters('storageAccountNamePrefix'),parameters('tempTag'))]"
   },
   "resources": [
     {
