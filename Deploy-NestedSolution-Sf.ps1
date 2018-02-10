@@ -35,6 +35,6 @@ New-AzureRmResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateUri $template `
     -TemplateParameterUri $templateParameters `
-    -Debug
+    
     
     

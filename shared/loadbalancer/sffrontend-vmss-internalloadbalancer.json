@@ -49,6 +49,7 @@
       {
         "apiVersion": "[parameters('loadBalancerApiVersion')]",
         "type": "Microsoft.Network/loadBalancers",
+        "location": "[resourceGroup().location]",
         "name": "[concat('LB','-', parameters('clusterName'),'-',variables('lbsuffixName'))]",
         "properties": {
           "frontendIPConfigurations": [
