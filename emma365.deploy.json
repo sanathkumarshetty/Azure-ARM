@@ -24,7 +24,7 @@
     },
     "clusterName": {
       "type": "string",
-       "defaultValue": "tetclustersanath"
+       "defaultValue": "tetclustersanath",
       "metadata": {
         "description": "Template name for the storage account."
       }
