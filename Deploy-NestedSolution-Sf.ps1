@@ -1,5 +1,5 @@
 ﻿### Define variables
-$location = 'Australia Southeast'
+$location = 'North Europe'
 $resourceGroupName = 'sf-arm-nested'
 $resourceDeploymentSolutionName = 'sf-arm-nested-deployment'
 $templateBaseUri = 'https://raw.githubusercontent.com/sanathkumarshetty/Azure-ARM/master'

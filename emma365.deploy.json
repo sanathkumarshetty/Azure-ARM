@@ -22,6 +22,13 @@
         "description": "Name of the storage account deployment."
       }
     },
+    "clusterName": {
+      "type": "string",
+       "defaultValue": "tetclustersanath"
+      "metadata": {
+        "description": "Template name for the storage account."
+      }
+    },
     "sharedTemplateNameDiagnosticsStorage": {
       "type": "string",
       "metadata": {
@@ -135,6 +142,43 @@
       "metadata": {
         "description": "Address Range for WAF"
       }
+    },
+    "nestedDeploymentNamesffrontendlb": {
+      "type": "string",
+      "metadata": {
+        "description": "Deployment Name for sffrontend lb"
+      }
+    },
+    "sharedTemplateNamelbsffrontend": {
+      "type": "string",
+      "metadata": {
+        "description": "Shared TemplateName for sffrontend lb"
+      }
+    },
+
+    "applicationStartPortsffrontend": {
+      "type": "int",
+      "defaultValue": 20000
+    },
+    "applicationEndPortsffrontend": {
+      "type": "int",
+      "defaultValue": 30000
+    },
+    "ephemeralStartPortsffrontend": {
+      "type": "int",
+      "defaultValue": 49152
+    },
+    "ephemeralEndPortsffrontend": {
+      "type": "int",
+      "defaultValue": 65534
+    },
+    "fabricTcpGatewayPortsffrontend": {
+      "type": "int",
+      "defaultValue": 19000
+    },
+    "fabricHttpGatewayPortsffrontend": {
+      "type": "int",
+      "defaultValue": 19080
     }
   },
   "variables": {
@@ -203,6 +247,26 @@
           "deploymentType": { "value": "[parameters('deploymentType')]" }
         }
       }
+    },
+    {
+      "apiVersion": "[variables('deploymentApiVersion')]",
+      "name": "[parameters('nestedDeploymentNamesffrontendlb')]",
+      "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "[concat('Microsoft.Resources/deployments/', parameters('nestedDeploymentNameVnet'))]"
+      ]
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('baseTemplateUri'), '/shared/', parameters('sharedTemplateNamelbsffrontend'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "loadBalancerApiVersion": { "value": "[variables('loadBalancerApiVersion')]" },
+          "clusterName": { "value": "[parameters('clusterName')]" },
+          "sffrontendSubnet": { "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.subnetIDsffrontend.value]" }
+        }
+      }
     }
-  ]
-}
+        ]
+      }
