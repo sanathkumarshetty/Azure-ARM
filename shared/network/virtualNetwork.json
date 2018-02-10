@@ -79,10 +79,10 @@
   },
   "variables": {
     "vNetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vNetName'))]",
-    "subnetIDsffrontend": "[concat(variables('vNetID'), '/network/', parameters('subnetNamesfFrontEnd'))]",
-    "subnetNamesfBackEndID": "[concat(variables('vNetID'), '/network/', parameters('subnetNamesfBackEnd'))]",
-    "subnetNamesfManagementID": "[concat(variables('vNetID'), '/network/', parameters('subnetNamesfManagement'))]",
-    "subnetNameWAFID": "[concat(variables('vNetID'), '/network/', parameters('subnetNameWAF'))]"
+    "subnetIDsffrontend": "[concat(variables('vNetID'), '/subnets/', parameters('subnetNamesfFrontEnd'))]",
+    "subnetNamesfBackEndID": "[concat(variables('vNetID'), '/subnets/', parameters('subnetNamesfBackEnd'))]",
+    "subnetNamesfManagementID": "[concat(variables('vNetID'), '/subnets/', parameters('subnetNamesfManagement'))]",
+    "subnetNameWAFID": "[concat(variables('vNetID'), '/subnets/', parameters('subnetNameWAF'))]"
 
   },
   "resources": [
