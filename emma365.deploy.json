@@ -223,6 +223,7 @@
     "vvvvvvvvvv": {
       "type": "string",
       "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.subnetIDsffrontend.vNetID]",
-      
+
     }
+  }
   }
