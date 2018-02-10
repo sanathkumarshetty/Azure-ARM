@@ -222,7 +222,7 @@
     },
     "vvvvvvvvvv": {
       "type": "string",
-      "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.subnetIDsffrontend.vNetID]",
+      "value": "[reference(parameters('nestedDeploymentNameVnet')).outputs.vNetID.value]"
 
     }
   }
